@@ -1,0 +1,148 @@
+/**
+ * <Form.DatePicker /> component styles
+ * ============
+ * based on react-day-picker package
+ */
+
+// 1. react-essentials classes
+// ------------------------------
+
+.form-datepicker {
+  @extend .dropdown !optional;
+  width: 100%;
+
+  .form-datepicker-control {
+    max-width: 286px;
+    width: 100%;
+    cursor: default;
+    user-select: none;
+
+    &:not(:disabled) {
+      background-color: #fff;
+    }
+
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -256 1850 1850'%3E%3Cpath d='M219.12 1425.864h288v-288h-288v288zm352 0h320v-288h-320v288zm-352-352h288v-320h-288v320zm352 0h320v-320h-320v320zm-352-384h288v-288h-288v288zm736 736h320v-288h-320v288zm-384-736h320v-288h-320v288zm768 736h288v-288h-288v288zm-384-352h320v-320h-320v320zm-352-864v-288q0-13-9.5-22.5t-22.5-9.5h-64q-13 0-22.5 9.5t-9.5 22.5v288q0 13 9.5 22.5t22.5 9.5h64q13 0 22.5-9.5t9.5-22.5zm736 864h288v-320h-288v320zm-384-384h320v-288h-320v288zm384 0h288v-288h-288v288zm32-480v-288q0-13-9.5-22.5t-22.5-9.5h-64q-13 0-22.5 9.5t-9.5 22.5v288q0 13 9.5 22.5t22.5 9.5h64q13 0 22.5-9.5t9.5-22.5zm384-64v1280q0 52-38 90t-90 38h-1408q-52 0-90-38t-38-90v-1280q0-52 38-90t90-38h128v-96q0-66 47-113t113-47h64q66 0 113 47t47 113v96h384v-96q0-66 47-113t113-47h64q66 0 113 47t47 113v96h128q52 0 90 38t38 90z' fill='%23666'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: top 0.6875rem right 0.5rem !important;
+    background-size: auto 1rem !important;
+  }
+
+  &.show .form-datepicker-control {
+    @extend .form-control:focus !optional;
+  }
+
+  .form-datepicker-menu {
+    @extend .dropdown-menu !optional;
+
+    border-radius: 0;
+    margin-top: 0;
+    display: block;
+    border: 1px solid #888;
+    padding: 0;
+  }
+}
+
+// 2. react-select classes
+// ------------------------------
+
+@import "form-datepicker-original";
+
+.DayPicker {
+  width: 284px;
+}
+
+.DayPicker-wrapper {
+  padding: 1rem;
+}
+
+.DayPicker-Month {
+  margin: 0 auto;
+}
+
+.DayPicker-Weekday {
+  font-size: 0.875rem;
+
+  // disable weekday title tooltip
+  pointer-events: none;
+  > abbr {
+    text-decoration: none;
+  }
+}
+
+.DayPicker-Day,
+.DayPicker-Weekday {
+  padding: 0;
+  line-height: 2.25rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  text-align: center;
+  border: 0;
+  border-radius: 0.125rem;
+}
+
+.DayPicker-NavButton,
+.DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
+  &:hover {
+    background-color: #eee !important;
+  }
+
+  &:focus {
+    outline: thin dotted #333 !important;
+    outline: 5px auto -webkit-focus-ring-color !important;
+  }
+
+  &:hover:focus {
+    outline: none !important;
+  }
+}
+
+.DayPicker-NavButton {
+  top: 1rem;
+  right: 1rem;
+  margin-top: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  background-size: auto 0.875rem;
+  border-radius: 0.125rem;
+}
+
+.DayPicker-NavButton--prev {
+  margin-right: 2.25rem;
+}
+
+.DayPicker-Caption {
+  height: 2.25rem;
+  line-height: 2.25rem;
+  padding: 0 0.375rem;
+}
+
+.DayPicker-Weekday,
+.DayPicker-WeekNumber {
+  color: #aaa;
+}
+
+.DayPicker-TodayButton {
+  color: #888;
+}
+
+.DayPicker-Day--today {
+  color: red;
+}
+
+.DayPicker-Day--disabled,
+.DayPicker-Day--outside,
+.DayPicker-Day--sunday:not(.DayPicker-Day--today) {
+  color: #ddd;
+}
+
+.DayPicker-Day--sunday {
+  color: #f5f5f5;
+}
+
+.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
+  background-color: #666 !important;
+
+  &:hover {
+    background-color: #666 !important;
+  }
+}
