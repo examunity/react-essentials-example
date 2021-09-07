@@ -1,4 +1,3 @@
-// @flow
 const RULES = {
   confirmed: [],
   email: [],
@@ -8,6 +7,18 @@ const RULES = {
   numeric: [],
   amount: ["amount"],
   required: [],
+};
+
+const LANG = {
+  confirmed: "The value confirmation does not match.",
+  email: "The value must be a valid email address.",
+  numeric: "The value must be a valid number without decimal.",
+  amount: "The value must be a valid amount.",
+  username:
+    "The value may only contain letters, numbers, periods and underscores.",
+  max: "The value may not be greater than {max} characters.",
+  min: "The value must be at least {min} characters.",
+  required: "The field is required.",
 };
 
 const parseSchema = (rawSchema) => {
@@ -101,7 +112,7 @@ const validateRule = (rule, key, values, schema) => {
   return validate(values[key], schema[key][rule], key, values);
 };
 
-const getNamedParameters = (rule, parameters) => {
+/* const getNamedParameters = (rule, parameters) => {
   const namedParameters = {};
 
   parameters.forEach((parameter, key) => {
@@ -109,7 +120,7 @@ const getNamedParameters = (rule, parameters) => {
   });
 
   return namedParameters;
-};
+}; */
 
 export default function validateSchema(rawSchema) {
   if (!rawSchema) return null;
@@ -128,10 +139,12 @@ export default function validateSchema(rawSchema) {
       Object.keys(schema[key]).forEach((rule) => {
         const validation = validateRule(rule, key, values, schema);
         if (validation === false) {
-          errors[key] = {
+          errors[key] = LANG[rule];
+
+          /* errors[key] = {
             rule,
             parameters: getNamedParameters(rule, schema[key][rule]),
-          };
+          }; */
         }
 
         if (typeof validation !== "boolean") {
@@ -139,10 +152,12 @@ export default function validateSchema(rawSchema) {
 
           validation.then((response) => {
             if (response.valid === false) {
-              errors[key] = {
+              errors[key] = LANG[rule];
+
+              /* errors[key] = {
                 rule,
                 parameters: getNamedParameters(rule, schema[key][rule]),
-              };
+              }; */
             }
           });
         }
